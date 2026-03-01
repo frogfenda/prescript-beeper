@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\STM_Standard_Work.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\STM_Standard_Work.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Sun Mar  1 12:26:11 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Sun Mar  1 13:05:24 2026
 <BR><P>
-<H3>Maximum Stack Usage =        704 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        736 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; Prescript_Action &rArr; Prescript_Decode_Effect &rArr; OLED_ShowString &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; Write_IIC_Command &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; GPIO_ResetBits
 <P>
@@ -374,7 +374,7 @@ Global Symbols
 <P><STRONG><a name="[f2]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6b]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 704 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 736 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; Prescript_Action &rArr; Prescript_Decode_Effect &rArr; OLED_ShowString &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; Write_IIC_Command &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; GPIO_ResetBits
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -399,8 +399,8 @@ Global Symbols
 
 <P><STRONG><a name="[94]"></a>rand</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, rand.o(.emb_text))
 <BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Random_Glitch
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 </UL>
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
@@ -568,10 +568,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_rand_2
 </UL>
 
-<P><STRONG><a name="[b5]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
+<P><STRONG><a name="[b4]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 </UL>
 
 <P><STRONG><a name="[f5]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
@@ -1007,6 +1008,7 @@ Global Symbols
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Random_Glitch
 </UL>
 
@@ -1020,6 +1022,7 @@ Global Symbols
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Hardware_Init
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Random_Glitch
 </UL>
 
@@ -1108,6 +1111,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
 </UL>
 
 <P><STRONG><a name="[c5]"></a>Is_System_Sleeping</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, sleep_system.o(.text.Is_System_Sleeping))
@@ -1180,25 +1184,28 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowChar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 </UL>
 
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(.text.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[b1]"></a>Prescript_Action</STRONG> (Thumb, 142 bytes, Stack size 120 bytes, prescript_logic.o(.text.Prescript_Action))
-<BR><BR>[Stack]<UL><LI>Max Depth = 680 + Unknown Stack Size
+<P><STRONG><a name="[b1]"></a>Prescript_Action</STRONG> (Thumb, 368 bytes, Stack size 144 bytes, prescript_logic.o(.text.Prescript_Action))
+<BR><BR>[Stack]<UL><LI>Max Depth = 712 + Unknown Stack Size
 <LI>Call Chain = Prescript_Action &rArr; Prescript_Decode_Effect &rArr; OLED_ShowString &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; Write_IIC_Command &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; GPIO_ResetBits
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowString
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Is_Key_Pressed
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Random_Glitch
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Random_Seed
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Prescript
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Prescript_Count
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;srand
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sprintf
@@ -1306,7 +1313,7 @@ Global Symbols
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wake_Up_System
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 </UL>
 
 <P><STRONG><a name="[aa]"></a>Write_IIC_Data</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, oled.o(.text.Write_IIC_Data))
@@ -1336,7 +1343,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
 </UL>
 
 <P><STRONG><a name="[96]"></a>delay_us</STRONG> (Thumb, 140 bytes, Stack size 12 bytes, sys_tik.o(.text.delay_us))
@@ -1346,7 +1353,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 152 bytes, Stack size 24 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 704 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 736 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Prescript_Action &rArr; Prescript_Decode_Effect &rArr; OLED_ShowString &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; Write_IIC_Command &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; GPIO_ResetBits
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sleep_System_Tick
@@ -1490,19 +1497,6 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
 </UL>
 
-<P><STRONG><a name="[b4]"></a>Prescript_Decode_Effect</STRONG> (Thumb, 418 bytes, Stack size 440 bytes, prescript_logic.o(.text.Prescript_Decode_Effect))
-<BR><BR>[Stack]<UL><LI>Max Depth = 560<LI>Call Chain = Prescript_Decode_Effect &rArr; OLED_ShowString &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; Write_IIC_Command &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; GPIO_ResetBits
-</UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_IIC_Command
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowString
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Random_Glitch
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
-</UL>
-<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
-</UL>
-
 <P><STRONG><a name="[93]"></a>Buzzer_Random_Glitch</STRONG> (Thumb, 128 bytes, Stack size 32 bytes, prescript_logic.o(.text.Buzzer_Random_Glitch))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Buzzer_Random_Glitch &rArr; delay_us
 </UL>
@@ -1511,7 +1505,23 @@ Local Symbols
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Decode_Effect
+</UL>
+
+<P><STRONG><a name="[b5]"></a>Prescript_Decode_Effect</STRONG> (Thumb, 554 bytes, Stack size 448 bytes, prescript_logic.o(.text.Prescript_Decode_Effect))
+<BR><BR>[Stack]<UL><LI>Max Depth = 568<LI>Call Chain = Prescript_Decode_Effect &rArr; OLED_ShowString &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; Write_IIC_Command &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; GPIO_ResetBits
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_IIC_Command
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowString
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Random_Glitch
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Prescript_Action
 </UL>
 
 <P><STRONG><a name="[a4]"></a>IIC_Delay</STRONG> (Thumb, 30 bytes, Stack size 4 bytes, my_iic.o(.text.IIC_Delay))
