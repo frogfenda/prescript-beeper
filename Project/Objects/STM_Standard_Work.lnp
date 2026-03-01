@@ -5,6 +5,7 @@
 ".\objects\prescript_data.o"
 ".\objects\prescript_logic.o"
 ".\objects\sleep_system.o"
+".\objects\app_fsm.o"
 ".\objects\my_iic.o"
 ".\objects\oled.o"
 ".\objects\main.o"

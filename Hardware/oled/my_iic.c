@@ -3,7 +3,7 @@
 // IIC微秒级延时函数 (由于系统SysTick的delay_us在不同时钟下可能不准)
 // 这里用空循环代替，足够应付OLED的400kHz IIC速率
 static void IIC_Delay(void) {
-    uint8_t i = 0; 
+    uint8_t i = 5; 
     while(i--); 
 }
 

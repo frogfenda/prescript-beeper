@@ -14,6 +14,8 @@ void OLED_Clear(void);
 void OLED_Set_Pos(unsigned char x, unsigned char y);
 void OLED_ShowChar(uint8_t x, uint8_t y, uint8_t chr, uint8_t Char_Size);
 void OLED_ShowString(uint8_t x, uint8_t y, uint8_t *chr, uint8_t Char_Size);
+void OLED_Refresh_GRAM(void);
+extern uint8_t OLED_GRAM[8][128];
 
 // 底层通信函数
 void Write_IIC_Command(unsigned char IIC_Command);

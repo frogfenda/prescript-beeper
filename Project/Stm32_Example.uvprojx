@@ -424,6 +424,11 @@
               <FileType>1</FileType>
               <FilePath>..\Apps\sleep_system.c</FilePath>
             </File>
+            <File>
+              <FileName>app_fsm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apps\app_fsm.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
