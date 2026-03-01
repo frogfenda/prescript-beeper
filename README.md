@@ -86,7 +86,9 @@ The current V1.0 standalone validation version implements the following:
 * **Pure Software Audio Engine**: Uses precise SysTick delays and software loops to drive the buzzer, generating randomized mechanical/computational spark sounds.
 * **State Machine Logic**: Supports auto-screen-off (burn-in protection) showing a standby logo, with seamless interrupt and wake-up via button press.
 * **Hardware TRNG Simulation**: Reads the electromagnetic noise from a floating ADC pin as the random seed for prescript extraction.
+* **Customizedable Prescript Set:** Simply modify the array in prescript_data.c.
 
+  
 ## 🚀 Roadmap
 
 The ultimate goal is to evolve this project into a complete, IoT-enabled desktop terminal. The upcoming refactoring and upgrade plans are as follows:
@@ -110,8 +112,8 @@ To run the current PoC version, you will need:
 ### Pinout Reference
 | Module | Pin | STM32 Port |
 | --- | --- | --- |
-| OLED | SCL | PB6 |
-| OLED | SDA | PB7 |
+| OLED | SCL | PB8 |
+| OLED | SDA | PB9 |
 | Buzzer | I/O | PA8 |
 | Button | I/O | PA0 |
 
