@@ -84,7 +84,9 @@ static void Prescript_Decode_Effect(const char* target_str, uint8_t x, uint8_t y
     uint8_t len = strlen(target_str);
     char display_buf[80]; 
     int lucky_jumps[80]; 
-    int max_jumps = 40;  
+    
+    // 【优化 1】：把最大跳动帧数从 40 压缩到 25 帧，大幅缩短整体拖沓感
+    int max_jumps = 25;  
     
     for (int i = 0; i < len; i++) {
         if (target_str[i] == ' ') {
@@ -93,23 +95,21 @@ static void Prescript_Decode_Effect(const char* target_str, uint8_t x, uint8_t y
         } else {
             display_buf[i] = ' ';
             if (i < 13) {
-                // 抬头 [ PRESCRIPT ] 在极短时间内锁定
-                lucky_jumps[i] = (rand() % 6) + 2; 
+                // 抬头 [ PRESCRIPT ] 在第 1~4 帧之间极速锁定
+                lucky_jumps[i] = (rand() % 4) + 1; 
             } else {
-                // 具体指令慢慢收束
-                lucky_jumps[i] = (rand() % (max_jumps - 15)) + 15; 
+                // 【优化 2】：下方指令在第 8~22 帧之间收束（原来是 15~40帧）
+                // 这样既保留了抬头先锁定的层次感，又让下方指令的解密变得干脆利落！
+                lucky_jumps[i] = (rand() % 15) + 8; 
             }
         }
     }
     display_buf[len] = '\0';
 
-    // 【新增】：标志位，用于记录“抬头锁定音”是否已经播放过
     uint8_t header_locked_played = 0; 
 
     for (int frame = 0; frame < max_jumps; frame++) {
         uint8_t all_locked = 1; 
-        
-        // 【新增】：当前帧抬头是否已经全部锁定？默认认为是，下面遇到没锁定的再推翻
         uint8_t header_locked = 1; 
 
         for (int i = 0; i < len; i++) {
@@ -120,27 +120,25 @@ static void Prescript_Decode_Effect(const char* target_str, uint8_t x, uint8_t y
             } else {
                 display_buf[i] = 33 + (rand() % 94); 
                 all_locked = 0; 
-                // 如果这个没锁定的字符属于前13个（即抬头部分），说明抬头还没完全锁定
                 if (i < 13) header_locked = 0; 
             }
         }
 
         OLED_ShowString(x, y, (uint8_t*)display_buf, 16); 
 
-        // 【核心视听反馈】：在抬头刚好全部锁定的那一瞬间，发出一声清脆短促的“滴”！
         if (header_locked && !header_locked_played) {
             BUZZER_ON();
-            delay_ms(40); // 40ms的长鸣，与几微秒的运算碎音形成鲜明对比
+            delay_ms(40); 
             BUZZER_OFF();
-            header_locked_played = 1; // 标记已响，之后不再重复触发
+            header_locked_played = 1; 
         }
 
-        // 如果还没全部解密完，继续发出滋滋的碎音
         if (!all_locked) {
             Buzzer_Random_Glitch();
         }
 
-        delay_ms(1); 
+        // 【优化 3】：删掉了这里的 delay_ms(1);
+        // 因为单片机刷新满屏 64 个字符的 IIC 通信本身就已经自带了几十毫秒的物理延时，不需要再人为拖慢了。
 
         if (all_locked) {
             break; 
@@ -156,8 +154,7 @@ static void Prescript_Decode_Effect(const char* target_str, uint8_t x, uint8_t y
     OLED_ShowString(x, y, (uint8_t*)target_str, 16);
 }
 // ================= 对外暴露的动作接口 =================
-// ================= 对外暴露的动作接口 =================
-// ================= 对外暴露的动作接口 =================
+
 void Prescript_Action(void) {
     srand(Get_Random_Seed()); 
     
