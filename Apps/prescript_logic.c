@@ -79,6 +79,43 @@ static void Buzzer_Random_Glitch(void) {
         delay_us(tone_delay_us);
     }
 }
+// ================= 新增：多音阶音效引擎 =================
+
+// 基础发声函数：指定频率(Hz)和时长(ms)
+static void Buzzer_Play_Tone(uint16_t freq_hz, uint16_t duration_ms) {
+    if (freq_hz == 0) {
+        delay_ms(duration_ms); // 如果频率为0，当作休止符（静音）
+        return;
+    }
+    // 计算半周期的微秒数 (T = 1/f, 半周期 = 1000000 / f / 2)
+    uint32_t half_period_us = 500000 / freq_hz; 
+    // 计算在这段时间内需要震动多少次
+    uint32_t cycles = (duration_ms * 1000) / (half_period_us * 2); 
+    
+    for (uint32_t i = 0; i < cycles; i++) {
+        BUZZER_ON();
+        delay_us(half_period_us);
+        BUZZER_OFF();
+        delay_us(half_period_us);
+    }
+}
+
+// 1. 抬头锁定音：急促的“低-高”双音（充满系统确认的科技感）
+static void Sound_Header_Locked(void) {
+    Buzzer_Play_Tone(1500, 30); // 较沉闷的 1500Hz 响 30ms
+    Buzzer_Play_Tone(2500, 40); // 极清脆的 2500Hz 响 40ms
+}
+
+// 2. 解析完成音：庄重的“滴-滴-叮~”（三音阶升调宣告）
+static void Sound_Decode_Complete(void) {
+    Buzzer_Play_Tone(1200, 60);  // 第一声低沉
+    delay_ms(20);                // 短暂的呼吸停顿
+    Buzzer_Play_Tone(1200, 60);  // 第二声拉高
+    delay_ms(20);                
+    Buzzer_Play_Tone(1200, 60); // 最后一声嘹亮的长鸣宣告
+		delay_ms(20);                
+    Buzzer_Play_Tone(1200, 60); // 最后一声嘹亮的长鸣宣告
+}
 
 static void Prescript_Decode_Effect(const char* target_str, uint8_t x, uint8_t y) {
     uint8_t len = strlen(target_str);
@@ -127,9 +164,7 @@ static void Prescript_Decode_Effect(const char* target_str, uint8_t x, uint8_t y
         OLED_ShowString(x, y, (uint8_t*)display_buf, 16); 
 
         if (header_locked && !header_locked_played) {
-            BUZZER_ON();
-            delay_ms(40); 
-            BUZZER_OFF();
+						Sound_Header_Locked();
             header_locked_played = 1; 
         }
 
@@ -211,8 +246,5 @@ void Prescript_Action(void) {
     Prescript_Decode_Effect(final_prescript, 0, 0);
     
     // 宣告命运
-    delay_ms(200);
-    BUZZER_ON();
-    delay_ms(300);
-    BUZZER_OFF();
+    Sound_Decode_Complete();
 }
