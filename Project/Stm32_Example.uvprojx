@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Library\inc;..\Apps;..\CMSIS;..\User;..\Library\src;..\System;..\Drivers;..\Bsp_service</IncludePath>
+              <IncludePath>..\Library\inc;..\Apps;..\CMSIS;..\User;..\Library\src;..\System;..\Drivers;..\Hardware;..\Hardware\oled</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -407,25 +407,57 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>User</GroupName>
+          <GroupName>Apps</GroupName>
           <Files>
             <File>
-              <FileName>stm32f10x_it.c</FileName>
+              <FileName>prescript_data.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER\stm32f10x_it.c</FilePath>
+              <FilePath>..\Apps\prescript_data.c</FilePath>
             </File>
+            <File>
+              <FileName>prescript_logic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apps\prescript_logic.c</FilePath>
+            </File>
+            <File>
+              <FileName>sleep_system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apps\sleep_system.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>my_iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\oled\my_iic.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\oled\oled.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User</GroupName>
+          <Files>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\main.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f10x_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\stm32f10x_it.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Drivers</GroupName>
-        </Group>
-        <Group>
-          <GroupName>Apps</GroupName>
         </Group>
         <Group>
           <GroupName>Library</GroupName>
@@ -544,26 +576,6 @@
               <FileName>stm32f10x_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Library\src\stm32f10x_wwdg.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Bsp_service</GroupName>
-          <Files>
-            <File>
-              <FileName>bsp_init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp_service\bsp_init.c</FilePath>
-            </File>
-            <File>
-              <FileName>oled.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\oled.c</FilePath>
-            </File>
-            <File>
-              <FileName>my_iic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp_service\my_iic.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,5 +1,5 @@
-./objects/my_iic.o: ..\Hardware\oled\my_iic.c ..\Hardware\oled\my_iic.h \
-  ..\CMSIS\stm32f10x.h ..\CMSIS\core_cm3.h \
+./objects/prescript_logic.o: ..\Apps\prescript_logic.c \
+  ..\Apps\prescript_logic.h ..\CMSIS\stm32f10x.h ..\CMSIS\core_cm3.h \
   E:\develop\Keil_v5\ARM\ARMCLANG\include\stdint.h \
   ..\CMSIS\system_stm32f10x.h ..\User\stm32f10x_conf.h \
   ..\Library\inc\stm32f10x_adc.h ..\Library\inc\stm32f10x_bkp.h \
@@ -13,4 +13,8 @@
   ..\Library\inc\stm32f10x_rtc.h ..\Library\inc\stm32f10x_sdio.h \
   ..\Library\inc\stm32f10x_spi.h ..\Library\inc\stm32f10x_tim.h \
   ..\Library\inc\stm32f10x_usart.h ..\Library\inc\stm32f10x_wwdg.h \
-  ..\Library\inc\misc.h
+  ..\Library\inc\misc.h ..\Apps\prescript_data.h ..\Hardware\oled\oled.h \
+  ..\Hardware\oled\my_iic.h ..\System\Sys_tik.h \
+  E:\develop\Keil_v5\ARM\ARMCLANG\include\stdlib.h \
+  E:\develop\Keil_v5\ARM\ARMCLANG\include\string.h \
+  E:\develop\Keil_v5\ARM\ARMCLANG\include\stdio.h
